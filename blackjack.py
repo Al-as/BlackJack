@@ -73,7 +73,7 @@ class Dealer(Cards):
             if Dealer.hand_value == 21:
                 print(f'{Fore.RED}Dealer Wins')
 
-            if Dealer.hand_value > 16 & Player.hand_value > Dealer.hand_value or Dealer.hand_value > 16 & Dealer.hand_value < Player.hand_value or Player.hand_value == 21:
+            if Dealer.hand_value > 16 & Player.hand_value > Dealer.hand_value or Player.hand_value > Dealer.hand_value > 16:
                 t.sleep(3)
                 print(f'{Fore.GREEN}Player wins!')
         t.sleep(2)
@@ -84,6 +84,8 @@ class Dealer(Cards):
 
         if Dealer.hand_value == Player.hand_value & Dealer.hand_value > 16:
             print(f'{Fore.GREEN}It is a Tie.. Wow')
+
+
 class Player(Cards):
     hand = {
 
