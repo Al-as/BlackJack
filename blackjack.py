@@ -1,8 +1,16 @@
-## Created by Hidden ;)
-
 import time as t
 import random
 from colorama import Fore
+
+print('''
+
+
+░█▀▀█ ░█─── ─█▀▀█ ░█▀▀█ ░█─▄▀ ───░█ ─█▀▀█ ░█▀▀█ ░█─▄▀ 
+░█▀▀▄ ░█─── ░█▄▄█ ░█─── ░█▀▄─ ─▄─░█ ░█▄▄█ ░█─── ░█▀▄─ 
+░█▄▄█ ░█▄▄█ ░█─░█ ░█▄▄█ ░█─░█ ░█▄▄█ ░█─░█ ░█▄▄█ ░█─░█
+
+
+''')
 
 
 class Cards:
@@ -31,7 +39,8 @@ class Dealer(Cards):
     }
     hand_value = sum(hand.values())
 
-    def play(self):
+    @staticmethod
+    def play():
         scard1 = random.choice(list(Cards.card_values.values()))
         Dealer.hand.update(card1 = scard1)
         Dealer.hand_value = sum(Dealer.hand.values())
@@ -42,7 +51,7 @@ class Dealer(Cards):
         scard2 = random.choice(list(Cards.card_values.values()))
 
         if Dealer.hand_value <= 16:
-            Dealer.hand.update(card2 = scard2)
+            Dealer.hand.update(card2=scard2)
             Dealer.hand_value = sum(Dealer.hand.values())
             print(f'Revealing Dealers Hidden Card..')
             t.sleep(5)
@@ -84,7 +93,7 @@ class Dealer(Cards):
             print(f'{Fore.RED}Dealer Wins')
             print(f'Players Hand Value: {Player.hand_value}, Dealers: {Dealer.hand_value}')
 
-        if Dealer.hand_value == Player.hand_value & Dealer.hand_value > 16:
+        if Dealer.hand_value == Player.hand_value:
             print(f'{Fore.GREEN}It is a Tie.. Wow')
 
 
@@ -106,7 +115,7 @@ class Player(Cards):
         print(f'{Fore.BLUE}Your card values equal up to {Fore.BLACK}{scard1 + scard2}')
         if Player.hand_value == 21:
             print(f'{Fore.GREEN}You win! Well not yet..')
-            Dealer.play(d)
+            Dealer.play()
         Player.hand_value = sum(Player.hand.values())
         while Player.hand_value != 21:
             next_move = input(f'{Fore.RESET}Hit or Pass?: ')
@@ -114,7 +123,7 @@ class Player(Cards):
 
             if next_move in 'pass':
                 print(f'You stayed with a total value of: {Player.hand_value} ')
-                Dealer.play(d)
+                Dealer.play()
                 break
             if next_move in 'hit':
                 scard3 = random.choice(list(Cards.card_values.values()))
@@ -131,7 +140,7 @@ class Player(Cards):
 
             if Player.hand_value == 21:
                 print("You got 21!")
-                Dealer.play(d)
+                Dealer.play()
                 break
 
             next_move = input('Hit or pass?: ')
@@ -145,12 +154,12 @@ class Player(Cards):
 
             if Player.hand_value == 21:
                 print("You got 21!")
-                Dealer.play(d)
+                Dealer.play()
                 break
 
             if next_move in 'pass':
                 print(f'You stayed with a total value of: {Player.hand_value} ')
-                Dealer.play(d)
+                Dealer.play()
                 break
 
             if Player.hand_value > 21:
@@ -162,7 +171,7 @@ class Player(Cards):
 
             if Player.hand_value == 21:
                 print("You got 21!")
-                Dealer.play(d)
+                Dealer.play()
                 break
 
             if next_move in 'hit':
@@ -175,11 +184,11 @@ class Player(Cards):
 
             if Player.hand_value == 21:
                 print(f'{Fore.LIGHTGREEN_EX}You got 21!')
-                Dealer.play(d)
+                Dealer.play()
                 break
             if next_move in 'pass':
                 print(f'You stayed with a value of {Player.hand_value}')
-                Dealer.play(d)
+                Dealer.play()
                 break
             if Player.hand_value > 21:
                 print(f'{Fore.RED}Bust!')
@@ -188,7 +197,9 @@ class Player(Cards):
 
 
 d = Dealer()
-insert_player_name_here = ''  # Name is optional you can just run the code
+insert_player_name_here = ''
 p1 = Player(insert_player_name_here)
 p1.play()
+
+
 
