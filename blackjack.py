@@ -1,3 +1,5 @@
+## Created by Hidden ;)
+
 import time as t
 import random
 from colorama import Fore
@@ -186,7 +188,7 @@ class Player(Cards):
 
 
 d = Dealer()
-insert_player_name_here = ''
+insert_player_name_here = ''  # Name is optional you can just run the code
 p1 = Player(insert_player_name_here)
 p1.play()
 
