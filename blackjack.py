@@ -73,12 +73,12 @@ class Dealer(Cards):
             if Dealer.hand_value == 21:
                 print(f'{Fore.RED}Dealer Wins')
 
-            if Dealer.hand_value > 16 & Player.hand_value > Dealer.hand_value or Player.hand_value > Dealer.hand_value > 16:
+            if Dealer.hand_value > 16 & Player.hand_value > Dealer.hand_value or Player.hand_value > Dealer.hand_value > 16 or Dealer.hand_value > 21:
                 t.sleep(3)
                 print(f'{Fore.GREEN}Player wins!')
         t.sleep(2)
 
-        if Dealer.hand_value > Player.hand_value & Player.hand_value < 21 or Player.hand_value > 21 or Player.hand_value < 21 & Dealer.hand_value > Player.hand_value:
+        if Player.hand_value < Dealer.hand_value < 21 and Player.hand_value < 21 or Player.hand_value > 21:
             print(f'{Fore.RED}Dealer Wins')
             print(f'Players Hand Value: {Player.hand_value}, Dealers: {Dealer.hand_value}')
 
